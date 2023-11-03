@@ -5,8 +5,6 @@ function App() {
   const [page, setPage] = useState(1);
   const [sortOrder, setSortOrder] = useState();
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
   };
@@ -146,7 +144,6 @@ function App() {
     color: #fff;
     position: fixed;
     top: 0;
-    left: ${(props) => (props.isOpen ? "0" : "-250px")};
     transition: left 0.3s;
     display: flex;
     flex-direction: column;
@@ -158,20 +155,10 @@ function App() {
       left: -250px;
     }
   `;
-  const HamburgerMenu = styled.div`
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 2;
-  `;
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+
   return (
     <>
-      <HamburgerMenu onClick={toggleSidebar}>☰</HamburgerMenu>
-      <SidebarContainer isOpen={isOpen}>
+      <SidebarContainer>
         <Main>
           <div>
             <Info>Sort by Price:</Info>
